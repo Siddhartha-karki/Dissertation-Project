@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFENET</title>
+    <style>
+        /* Footer */
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-content a {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            text-decoration: none; /* Remove underlines from links */
+            color: black; /* Set the text color to black */
+            font-weight: bold; /* Make the text bold */
+        }
+        
+        .footer-content img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px; /* Add spacing between the icon and text */
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: sans-serif; background-color: #f2f2f2;">
+    <div class="navbar" style="background-color: #333; color: #f2f2f2; padding: 10px 0; text-align: center;">
+        <a href="{% url 'safenet_scan' %}" style="text-decoration: none; color: #f2f2f2; font-size: 20px; margin: 0 10px;">Home</a>
+        <a href="{% url 'safenet_results' %}" style="text-decoration: none; color: #f2f2f2; font-size: 20px; margin: 0 10px;">Scan Results</a>
+        <a href="{% url 'check_fake_captive_portal' %}" style="text-decoration: none; color: #f2f2f2; font-size: 20px; margin: 0 10px;">Check Fake Captive Portal</a>
+    </div>
+
+    <div style="background-color: #fff; padding: 20px;">
+        <h1 style="font-size: 36px; font-weight: bold; color: #000; text-align: center;">Welcome to SAFENET</h1>
+    </div>
+<div style="background-color: #fff; color: #000; padding: 20px; margin: 20px; border-radius: 5px;">
+    <h2 style="font-size: 24px;">Connected Network (Safety Insights)</h2>
+    <p style="font-size: 18px;">Wi-Fi security is essential to keep your data safe from potential threats. Even if the network is encrypted, it is important to cross-check certain circumstances before continuing. It is highly recommended not to connect the publicy available Wi-Fi network with open connection type. Most of the devices shows a lock sign with the Wi-Fi name that means the Wi-Fi is secured where as the open network do not have those lockpad sign and sometimes might get auto connected when the auto-connect feature of device is enabled.  Here are certain tips to stay vigilant while using Publicly Aviable Wi-Fi Networks:</p>
+    <ol style="font-size: 18px;">
+        <li><strong>Check The Network Scan Report:</strong>
+            <h3> What is in the report?</h3>
+		<p> The report consist of details like connected network name, Mac address which is also known as the physical address, Signal Strength, Encryption Type, Network Type, Port Scan, Access Point Detection</p>	
+            	 <li> <strong> Identify the Network </strong></li>
+			<ul>
+                	<li style="margin-top: 20px;">Check to See If the Network is encrypted or open. </li>
+               		 <li>In Case of open network, Verify the Captive portal Link with our Fake Captive portal detection tool. To do this copy the url link of the captive portal from the browser and paste it in the fake portal checker to begin the scan.</li>
+			 <li> If the result is negative then avoid using the same network and look for alternative options.</li>
+            </ul>
+        </li>
+
+        <li style="margin-top: 20px;"><strong>Open Ports:</strong>
+		<h3> What are open ports</h3>
+		    <p> An open port is basically a software value that identifies gateway or a network endpoint. Any TCP/IP communication made on the internet are done through the ports so it is important to keep these services secured as attackers can use misconfigured and vulnerabilities of ports as a backdoor to the device. While scanning if the network is open and there are open ports detected then we suggest to consider these points before browsing the internet.</p>
+                        <ul>
+                	<li>Keep your device update as it contains security patches that address known vulnerabilities associated with open ports.</li>
+                	<li>See for other alternative options if available, we strongly suggest not to share valuable information on this situation.</li>
+			<li>Always use strong authentication techniques like two factor authentication, Strong combination of passwords for any services associated with open ports to prevent unauthorized access.</li>
+		
+            </ul>
+        </li>
+        <li style="margin-top: 20px;"><strong>Signal Strength Considerations:</strong>
+		<p> Signal Strength of a Wi-Fi is not directly related with security implications or the presence of a rougue access points but it can indirectly impact security. To stay vigilant please follow these steps:
+                <ul>
+                <li>To identify the rogue access point users can check the signal strengths of available wifi networks. -30 dbm to -70 dbm as shown in the scanning result are the ideal signals for connectivity. A very strong signal over an unusually long range could be a sign of a fake access point( Wifi Name).</li>
+                <li>High Signal Strength: Caution against connecting to networks with excessively high signal strength, as it might indicate proximity to the access point. Turn off Auto-Connect.</li>
+                <li> Low Signal Strength can cause poor connectivity, always check the signal strength before connection. </li>
+            </ul>
+        </li>
+	<li style="margin-top: 20px;"><strong>Fake Access Point Detection:</strong>
+            
+		<h3> What are Fake Access Points?</h3>
+			<p> A rogue access point is a malicious wireless access point set up by bad actors to mimic a legitimate network, tricking users into connecting to it. If the user is connected to these access points then the attacker can intercept, monitor, manipulate and even take over to the system leading to data theft and other security implications. To avoid connecting to Rogue Access Points and stay vigilant please cosider these steps: </p>
+               <ul>
+                <li>Always Check if there are multiple Access points with similar WI-FI name, when found verify with the network provider for legitimate SSID. It is higly advised not to connect with the following networks without the proper authentication of network.</li>
+                <li>Check the scan result, if the connected network is detected as Fake Ap then disconnect the network and look for alternative option for communication.</li>
+                <li>Run your device through antivirus scanning just to check if the device is already compromised with malware payload and other attack. </li>
+		<li style="margin-button: 20px;">Keep using the scanning tool time to time as fake access points are tricky and when auto-connect feature is on then the fake AP's can be auto connected having strong signal strength.</li>
+		
+            </ul>
+        </li>
+
+    </ol>
+</div>
+
+
+
+
+    <div style="background-color: #000; color: #333; padding: 20px; border-radius: 5px; width: 100%;">
+        <h2 style="font-size: 24px; color: #fff;">For more detailed information, you can refer to trusted online resources:</h2>
+        <ul style="font-size: 18px;">
+            <li><a href="https://www.example.com/" target="_blank" style="text-decoration: none; color: #fff;">Protect your information</a></li>
+            <li><a href="https://www.example.com/" target="_blank" style="text-decoration: none; color: #fff;">Wi-Fi Security Tips</a></li>
+            <li><a href="https://www.example.com/" target="_blank" style="text-decoration: none; color: #fff;">FTC Public Wi-Fi Tips</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <a href="mailto:https://www.example.com/">
+                <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-512.png" width="24" height="24" alt="Gmail" />
+                Gmail
+            </a>
+            <a href="https://www.example.com/">
+                <img src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-512.png" width="24" height="24" alt="Facebook" />
+                Facebook
+            </a>
+            <a href="https://www.example.com/">
+                <img src="https://cdn0.iconfinder.com/data/icons/logos-microsoft-office-365/128/Microsoft_Office-07-512.png" width="24" height="24" alt="Outlook" />
+                Outlook
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

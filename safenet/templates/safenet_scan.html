@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFENET</title>
+    <style>
+        /* Common styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100%;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Header styles */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-left: 20px;
+            color: #000;
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #000;
+        }
+
+        /* Body section styles */
+        .body-section {
+            text-align: left;
+            padding: 20px;
+            color: #fff;
+            background-color: #f5f5f5;
+        }
+
+        .left-align {
+            text-align: left;
+            margin-left: 20px;
+        }
+
+        .caution-note {
+            font-size: 20px;
+            color: #ff1100;
+            margin-top: 10px;
+        }
+
+        /* Button styles */
+        .scan-button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            font-size: 24px;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Network identification */
+        .identify-network {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .lock-icon, p {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            
+        }
+
+        .open-network-message {
+
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+            
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .footer-content a {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            text-decoration: none; /* Remove underlines from links */
+            color: black; /* Set the text color to black */
+            font-weight: bold; /* Make the text bold */
+        }
+        
+        .footer-content img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px; /* Add spacing between the icon and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'safenet_scan' %}">Home</a>
+        <a href="{% url 'safenet_results' %}">Scan Results</a>
+        <a href="{% url 'check_fake_captive_portal' %}">Check Fake Captive Portal</a>
+    </div>
+
+    <div class="header-section">
+        <h1>Welcome to SAFENET</h1>
+    </div>
+
+    <div class="body-section">
+        <h2 class="left-align">What This Application Does?</h2>
+        <h3 class="left-align">Safe Browsing Is Just One Click Away. Click The Scan Now Button To Begin The Scan And Know The Threats in Your Connected Network.</p>
+        <h3 class="caution-note">Caution: Using public or free Wi-Fi networks can pose security risks. Stay vigilant and be mindful of potential attacks. Protect your online presence with smart browsing habits and secure connections.</h3>
+        <form action="{% url 'safenet_results' %}" method="POST">
+            {% csrf_token %}
+            <button class="scan-button" type="submit">Scan Now</button>
+        </form>
+    </div>
+
+    <!-- Network identification section -->
+    <div class="identify-networks">
+        <h2>Identifying Secure Networks</h2>
+        <p><span class="lock-icon">🔒</span> Look for the lockpad icon next to your Wi-Fi network name when connecting.</p>
+        <p class="open-network-message">If the network is open (no lockpad icon), consider using a secure network if available. If not, scan the network using this tool and follow the recommended steps.</p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.example.com/">
+                <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-512.png" width="24" height="24" alt="Gmail" />
+                Gmail
+            </a>
+            <a href="https://www.example.com/">
+                <img src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-512.png" width="24" height="24" alt="Facebook" />
+                Facebook
+            </a>
+            <a href="https://www.example.com/">
+                <img src="https://cdn0.iconfinder.com/data/icons/logos-microsoft-office-365/128/Microsoft_Office-07-512.png" width="24" height="24" alt="Outlook" />
+                Outlook
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

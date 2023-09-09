@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fake Captive Portal Detection</title>
+    <style>
+        /* Common styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* Header section */
+        .header-section {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Body section */
+        .body-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-content a {
+            display: flex;
+            align-items: center;
+            margin: 0 10px;
+            text-decoration: none; /* Remove underlines from links */
+            color: black; /* Set the text color to black */
+            font-weight: bold; /* Make the text bold */
+        }
+        
+        .footer-content img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px; /* Add spacing between the icon and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar" style="background-color: #333; color: #f2f2f2; padding: 10px 0; text-align: center;">
+            <a href="{% url 'safenet_scan' %}" style="text-decoration: none; color: #f2f2f2; font-size: 20px; margin: 0 10px;">Home</a>
+            <a href="{% url 'safenet_results' %}" style="text-decoration: none; color: #f2f2f2; font-size: 20px; margin: 0 10px;">Scan Results</a>
+            <a href="{% url 'check_fake_captive_portal' %}" style="text-decoration: none; color: #f2f2f2; font-size: 20px; margin: 0 10px;">Check Fake Captive Portal</a>
+    </div>
+
+    <div class="header-section">
+        <h1>Fake Captive Portal Detection</h1>
+    </div>
+
+    <div class="body-section">
+        <form method="post">
+            {% csrf_token %}
+            <label for="login_url">WiFi Login URL:</label>
+            <input type="text" id="login_url" name="login_url" required><br>
+            <button type="submit">Check</button>
+        </form>
+        {% if is_captive_portal is not None %}
+            {% if is_captive_portal is False%}
+                <p style="color: red;"><Strong>This URL is suspected to be Fake Captive Portal. Do not proceed further to this Wi-Fi network.</strong></p>
+            {% else %}
+                <p><strong>The provided URL does not appear to be a fake captive portal. Please Continue to Log in.</strong>
+                </p>
+            {% endif %}
+        {% endif %}
+    </div>
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.example.com/SafeNet">
+                <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-512.png" width="24" height="24" alt="Gmail" />
+                Gmail
+            </a>
+            <a href="https://www.example.com/SafeNet">
+                <img src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-512.png" width="24" height="24" alt="Facebook" />
+                Facebook
+            </a>
+            <a href="https://www.example.com/SafeNet">
+                <img src="https://cdn0.iconfinder.com/data/icons/logos-microsoft-office-365/128/Microsoft_Office-07-512.png" width="24" height="24" alt="Outlook" />
+                Outlook
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
